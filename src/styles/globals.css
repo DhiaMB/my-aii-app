@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-text{
+	background: linear-gradient(90deg,#4ca5ff 2.34%,#b673f8 100.78%);
+}
+
+.card{
+    --tw-bg-opacity: 1;
+    background-color: rgb(22 27 34/var(--tw-bg-opacity));
+}
+
+body {
+	color: rgb(255, 255, 255);
+	background: linear-gradient(to bottom,
+			transparent,
+			rgb(0, 0, 0)) rgb(0, 0, 0);
+}
+
+@property --angle {
+	syntax: '<angle>';
+	initial-value: 90deg;
+	inherits: true;
+}
+
+@property --gradX {
+	syntax: '<percentage>';
+	initial-value: 50%;
+	inherits: true;
+}
+
+@property --gradY {
+	syntax: '<percentage>';
+	initial-value: 0%;
+	inherits: true;
+}
+
+:root {
+	--nav-text: #788ca0;
+	--d: 2500ms;
+	--angle: 90deg;
+	--gradX: 100%;
+	--gradY: 50%;
+	--c1: rgba(168, 239, 255, 1);
+	--c2: rgba(168, 239, 255, 0.1);
+}
+
+.box {
+	border: 0.32rem solid;
+	padding-left: 2.5vw;
+	padding-right: 2.5vw;
+	border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.2turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
+	animation: borderRotate var(--d) linear infinite forwards;
+}
+
+.box:hover {
+	animation-play-state: paused;
+}
+
+@keyframes borderRotate {
+	100% {
+		--angle: 420deg;
+	}
+}
+
+@keyframes borderRadial {
+	20% {
+		--gradX: 100%;
+		--gradY: 50%;
+	}
+
+	40% {
+		--gradX: 100%;
+		--gradY: 100%;
+	}
+
+	60% {
+		--gradX: 50%;
+		--gradY: 100%;
+	}
+
+	80% {
+		--gradX: 0%;
+		--gradY: 50%;
+	}
+
+	100% {
+		--gradX: 50%;
+		--gradY: 0%;
+	}
+}
+
+.gradient{
+    background-color: rgb(21 16 48 );
+}
+
+.loader {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	perspective: 1000px;
+  }
+  
+  .cube {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	animation: spin 2s infinite cubic-bezier(.36,.07,.19,.97);
+  }
+  
+  .cube div {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #9b59b6;
+	box-shadow: 0 0 5px rgba(0,0,0,.3);
+  }
+  
+  .front  { transform: rotateY(  0deg) translateZ(50px); }
+  .back   { transform: rotateX(180deg) translateZ(50px); }
+  .left   { transform: rotateY(270deg) translateZ(50px); }
+  .right  { transform: rotateY( 90deg) translateZ(50px); }
+  .top    { transform: rotateX( 90deg) translateZ(50px); }
+  .bottom { transform: rotateX(-90deg) translateZ(50px); }
+  
+  @keyframes spin {
+	from { transform: rotate3d(1, 1, 1, 0deg); }
+	to   { transform: rotate3d(1, 1, 1, 360deg); }
+  }
+  
+  @import url("https://fonts.googleapis.com/css?family=Overpass");
+
+  * {
+	box-sizing: border-box;
+	font-family: "Overpass", sans-serif;
+  }
+  
+  .tags-input {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	min-height: 48px;
+	width: 480px;
+	padding: 0 8px;
+	border: 1px solid rgb(214, 216, 218);
+	border-radius: 6px;
+	&:focus-within {
+	  border: 1px solid #0052cc;
+	}
+	input {
+	  flex: 1;
+	  border: none;
+	  height: 46px;
+	  font-size: 14px;
+	  padding: 4px 0 0 0;
+	  &:focus {
+		outline: transparent;
+	  }
+	}
+  }
+  
+  #tags {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+	margin: 8px 0 0 0;
+  }
+  
+  .tag {
+	width: auto;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	padding: 0 8px;
+	font-size: 14px;
+	list-style: none;
+	border-radius: 6px;
+	margin: 0 8px 8px 0;
+	background: #0052cc;
+	.tag-title {
+	  margin-top: 3px;
+	}
+	.tag-close-icon {
+	  display: block;
+	  width: 16px;
+	  height: 16px;
+	  line-height: 16px;
+	  text-align: center;
+	  font-size: 14px;
+	  margin-left: 8px;
+	  color: #0052cc;
+	  border-radius: 50%;
+	  background: #fff;
+	  cursor: pointer;
+	}
+  }
+  
+  @media screen and (max-width: 567px) {
+	.tags-input {
+	  width: calc(100vw - 32px);
+	}
+  }
